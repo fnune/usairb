@@ -1,5 +1,9 @@
 # usairb
 
+> :warning: Note that `usairb` is currently a learning project, and that the
+> features described here do not yet work. I keep [a development
+> log](https://fnune.com/devlog/usairb/2022/02/05/usairb-devlog-1) on my blog.
+
 The goal of [`usairb`][usairb-repo] (Universal Serial Air-Bus) is to transform
 any embedded Linux device with access to the Internet into a multiplexing
 transmitter for USB hubs: connect gadgets to it and use them remotely from your
@@ -21,3 +25,7 @@ device.
 ## Development
 
 To build the project, run `make`. The dependencies are `make` and `gcc`.
+
+### Recommended utilities
+
+- `usbutils` provides `lsusb`.
