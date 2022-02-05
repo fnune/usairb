@@ -7,8 +7,10 @@ OBJECT_FILES := $(patsubst $(SOURCE_DIR)/%.c,$(TARGET_DIR)/%.o,$(SOURCE_FILES))
 CC := gcc
 CFLAGS := -Wall
 
+LDLIBS := -ludev
+
 usairb: $(OBJECT_FILES)
-	$(CC) $(CFLAGS) -o $(TARGET_DIR)/$@ $^
+	$(CC) $(CFLAGS) $(LDLIBS) -o $(TARGET_DIR)/$@ $^
 
 $(TARGET_DIR):
 	mkdir -p $(TARGET_DIR)
