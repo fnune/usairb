@@ -1,8 +1,10 @@
 # usairb
 
 > :warning: Note that `usairb` is currently a learning project, and that the
-> features described here do not yet work. I keep [a development
-> log](https://fnune.com/devlog/usairb/2022/02/05/usairb-devlog-1) on my blog.
+> features described here do not yet work. I keep [a development log][devlog]
+> on my blog.
+
+[devlog]: https://fnune.com/devlog/usairb/2022/02/05/listening-to-devices-with-libudev-usairb-devlog-1/
 
 The goal of [`usairb`][usairb-repo] (Universal Serial Air-Bus) is to transform
 any embedded Linux device with access to the Internet into a multiplexing
