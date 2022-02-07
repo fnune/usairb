@@ -1,0 +1,3 @@
+[submodule "external/libusbip"]
+	path = external/libusbip
+	url = git@github.com:fnune/libusbip.git

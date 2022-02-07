@@ -4,7 +4,28 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "connection.h"
+#include "external/libusbip/libusbip/libusbip.h"
+
+int USAIRB_PORT = 3240;
+
 int main(void) {
+  int server_socket = usairb_connect(USAIRB_PORT);
+  int client_socket = usairb_accept(server_socket);
+
+  struct libusbip_connection_info usbip_connection_info = {
+      .ctx = LIBUSBIP_CTX_SERVER,
+      .server_sock = server_socket,
+      .client_sock = client_socket,
+  };
+
+  libusbip_error_t usbip_init_error = libusbip_init(&usbip_connection_info);
+  if (usbip_init_error) {
+    fprintf(stderr, "libusbip_init returned error code %i\n", usbip_init_error);
+    exit(EXIT_FAILURE);
+  }
+
+  // TODO: move udev stuff to a different file.
   struct udev *udev = udev_new();
   if (!udev) {
     fprintf(stderr, "udev_new returned NULL\n");
@@ -49,9 +70,10 @@ int main(void) {
         continue;
       }
 
-      printf("Received an event from a USB device:\n");
-      printf("   Node: %s\n", udev_device_get_devnode(device));
-      printf("   Action: %s\n", udev_device_get_action(device));
+      printf("%s %s vid:%s pid:%s\n", udev_device_get_action(device),
+             udev_device_get_devnode(device),
+             udev_device_get_property_value(device, "ID_VENDOR_ID"),
+             udev_device_get_property_value(device, "ID_MODEL_ID"));
 
       udev_device_unref(device);
     } else {

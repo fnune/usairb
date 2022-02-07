@@ -26,7 +26,12 @@ device.
 
 ## Development
 
-To build the project, run `make`. The dependencies are `make` and `gcc`.
+To build the project, run `make`.
+
+Dependencies:
+
+- `make`, `gcc`, probably other base utilities,
+- `usbip`
 
 ### Recommended utilities
 
