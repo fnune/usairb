@@ -23,3 +23,11 @@ $(TARGET_DIR)/%.o: $(SOURCE_DIR)/%.c | $(TARGET_DIR)
 
 $(LIBUSBIP_TARGET):
 	$(MAKE) -C $(LIBUSBIP_DIR)
+
+.PHONY: clean
+clean:
+	rm -rf $(TARGET_DIR)
+	$(MAKE) clean -C $(LIBUSBIP_DIR)
+
+compile_commands.json: clean
+	bear -- $(MAKE)

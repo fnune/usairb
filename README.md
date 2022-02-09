@@ -35,4 +35,7 @@ Dependencies:
 
 ### Recommended utilities
 
-- `usbutils` provides `lsusb`.
+- `usbutils` provides `lsusb`, which will be useful to debug `usairb`.
+- [`bear`](https://github.com/rizsotto/Bear) will allow you to run `make
+  compile_commands.json`, which makes the Clang LSP recognize items in your
+  project.
