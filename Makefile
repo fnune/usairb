@@ -12,17 +12,23 @@ CFLAGS := -Wall -I.
 
 LDLIBS := -ludev -lusb-1.0
 
-usairb: $(OBJECT_FILES) $(LIBUSBIP_TARGET)
-	$(CC) $(CFLAGS) $(LDLIBS) -o $(TARGET_DIR)/$@ $^
+# usairb
 
-$(TARGET_DIR):
-	mkdir -p $(TARGET_DIR)
+$(TARGET_DIR)/usairb: $(OBJECT_FILES) $(LIBUSBIP_TARGET) | $(TARGET_DIR)
+	$(CC) $(CFLAGS) $(LDLIBS) -o $@ $^
 
 $(TARGET_DIR)/%.o: $(SOURCE_DIR)/%.c | $(TARGET_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+$(TARGET_DIR):
+	mkdir -p $(TARGET_DIR)
+
+# dependencies
+
 $(LIBUSBIP_TARGET):
 	$(MAKE) -C $(LIBUSBIP_DIR)
+
+# utilities
 
 .PHONY: clean
 clean:
