@@ -25,7 +25,6 @@ $(TARGET_DIR):
 .PHONY: clean
 clean:
 	rm -rf $(TARGET_DIR)
-	$(MAKE) clean -C $(LIBUSBIP_DIR)
 
 compile_commands.json: clean
 	bear -- $(MAKE)
