@@ -33,6 +33,27 @@ Dependencies:
 - `make`, `gcc`, probably other base utilities,
 - `usbip`
 
+To run the USB/IP server, you'll need:
+
+```sh
+sudo modprobe usbip_host
+sudo systemctl start usbipd.service
+```
+
+To run `usairb`:
+
+```sh
+sudo ./target/usairb
+```
+
+To see exported devices:
+
+```sh
+sudo usbip list -r localhost
+```
+
 ### Recommended utilities
 
-- `usbutils` provides `lsusb`.
+- `usbutils` provides `lsusb`, which will be useful to debug `usairb`.
+- [`bear`](https://github.com/rizsotto/Bear) will allow you to run `make compile_commands.json`, which makes the Clang LSP recognize items in your
+  project.
