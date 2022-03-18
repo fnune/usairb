@@ -67,6 +67,7 @@ int main(void) {
       continue;
     }
 
+    // To find available properties, run `udevadm info --export-db`.
     const char *device_v = udev_device_get_property_value(device, "ID_VENDOR");
     const char *device_vid =
         udev_device_get_property_value(device, "ID_VENDOR_ID");
@@ -101,6 +102,8 @@ int main(void) {
           busid[length] = 0;
 
           char usbip_bind_command[50];
+          // TODO: devices will stay bound after usairb closes. Implement
+          // unbinding them before exiting the program.
           sprintf(usbip_bind_command, "usbip bind --busid=%s", busid);
           popen(usbip_bind_command, "r");
         };
