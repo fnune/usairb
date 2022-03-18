@@ -67,18 +67,21 @@ int main(void) {
       continue;
     }
 
+    const char *device_v = udev_device_get_property_value(device, "ID_VENDOR");
     const char *device_vid =
         udev_device_get_property_value(device, "ID_VENDOR_ID");
+    const char *device_p = udev_device_get_property_value(device, "ID_MODEL");
     const char *device_pid =
         udev_device_get_property_value(device, "ID_MODEL_ID");
-
-    char device_vid_pid[10];
-    sprintf(device_vid_pid, "%s:%s", device_vid, device_pid);
 
     if (device_vid == NULL || device_pid == NULL)
       continue;
 
-    printf("%s vid:pid %s\n", device_action, device_vid_pid);
+    char device_vid_pid[10];
+    sprintf(device_vid_pid, "%s:%s", device_vid, device_pid);
+
+    printf("%s vid:pid %s %s %s\n", device_action, device_vid_pid, device_v,
+           device_p);
 
     FILE *usbip_list_stdout = popen("usbip list --parsable --local", "r");
 

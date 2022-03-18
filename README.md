@@ -46,6 +46,12 @@ To run `usairb`:
 sudo ./target/usairb
 ```
 
+To see exported devices:
+
+```sh
+sudo usbip list -r localhost
+```
+
 ### Recommended utilities
 
 - `usbutils` provides `lsusb`, which will be useful to debug `usairb`.
