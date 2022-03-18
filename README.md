@@ -52,6 +52,12 @@ To see exported devices:
 sudo usbip list -r localhost
 ```
 
+To generate `compile_commands.json` for `clangd`:
+
+```sh
+make compile_commands.json
+```
+
 ### Recommended utilities
 
 - `usbutils` provides `lsusb`, which will be useful to debug `usairb`.
